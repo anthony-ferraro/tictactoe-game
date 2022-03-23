@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--dark-navy);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.App {
+    width: 460px;
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new-game-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-icons {
+    width: 80px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-icons {
+    height: 32px;
+    margin-bottom: 40px;
+}
+
+.icon-x {
+    color: var(--light-blue);
+}
+
+.icon-o {
+    color: var(--light-yellow);
+}
+
+.mark-select {
+    width: 100%;
+    height: 205px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0;
+    gap: 18px;
+
+    p:nth-of-type(1) {
+        text-transform: uppercase;
+        color: #A8BFC9;
+    }
+
+    p:nth-of-type(2) {
+        text-transform: uppercase;
+        color: #A8BFC9;
+        mix-blend-mode: normal;
+        opacity: 0.5;
+    }
+
+}
+
+.mark-buttons-wrapper {
+    width: 412px;
+    height: 72px;
+    background-color: var(--dark-navy);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+
+    button {
+        width: 50%;
+        height: 100%;
+        border: none;
+        border-radius: 10px;
+    }
+}
+
+.new-game-buttons {
+    margin-top: 40px;
+    width: 460px;
+    button {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 460px;
+    height: 624px;
+}
+
+.game-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.svg-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 70px;
+}
+
+.turn-tracker {
+    width: 140px;
+    height: 52px;
+    border-radius: 10px;
+    box-shadow: inset 0px -4px 0px #10212A;
+}
