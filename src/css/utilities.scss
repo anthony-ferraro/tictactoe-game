@@ -158,10 +158,8 @@
     fill: var(--dark-navy);
 }
 
-
-
-
-
-
-
-
+@media(max-height: 600px) {
+    body {
+        transform: scale(0.85);
+    }
+}

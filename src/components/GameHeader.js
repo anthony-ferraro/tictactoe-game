@@ -1,20 +1,24 @@
 import React from 'react'
-
+import { useContext } from 'react'
+import { GlobalContext } from '../context/GlobalState'
+import Icon from './Icon'
 const GameHeader = () => {
+  const context = useContext(GlobalContext);
+  const turn = context.turn
   return (
     <div className="game-header">
       <div className="svg-wrapper">
-        <svg width="32px" height="32px" className="game-icon icon-x" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <path transform="scale(0.5)" d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z" fill="#31C3BD" fillRule="evenodd"/>
-        </svg>
-        <svg width="32px" height="32px" className="game-icon icon-o" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <path transform="scale(0.5)" d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z" fill="#F2B137"/>
-        </svg>
+        <Icon icon='x' width='32px' height='32px' fill='#31C3BD'></Icon>
+        <Icon icon='o' width='32px' height='32px' fill='#F2B137'></Icon>
       </div>
       <div className="grey-border turn-tracker">
-
+        {turn==='x' ? <Icon icon='x' width='20px' height='20px' fill='#A8BFC9'></Icon>
+        :<Icon icon='o' width='20px' height='20px' fill='#A8BFC9'></Icon>}
+        <p className="heading-XS">TURN</p>
       </div>
-      <button className="button-square"></button>
+      <button className="button-square reset-button">
+        <Icon icon='reset' width='20px' height='20px' fill='#1F3641'></Icon>
+      </button>
     </div>
   )
 }
