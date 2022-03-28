@@ -5,6 +5,10 @@ import Icon from './Icon'
 const GameHeader = () => {
   const context = useContext(GlobalContext);
   const turn = context.turn
+  const setModalType = context.setModalType
+  const handleClick = () => {
+    setModalType("game-restart-menu")
+  }
   return (
     <div className="game-header">
       <div className="svg-wrapper">
@@ -16,7 +20,7 @@ const GameHeader = () => {
         :<Icon icon='o' width='20px' height='20px' fill='#A8BFC9'></Icon>}
         <p className="heading-XS">TURN</p>
       </div>
-      <button className="button-square reset-button">
+      <button onClick={handleClick} className="button-square reset-button">
         <Icon icon='reset' width='20px' height='20px' fill='#1F3641'></Icon>
       </button>
     </div>

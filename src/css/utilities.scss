@@ -100,6 +100,24 @@
     cursor: pointer;
 }
 
+.button-secondary-2 {
+    width: 226px;
+    height: 52px;
+    border-radius: 10px;
+    background: #A8BFC9;
+    box-shadow: inset 0px -4px 0px #6B8997;
+    color: var(--dark-navy);
+    border: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.button-secondary-2:hover {
+    background-color: var(--silver-hover);
+    cursor: pointer;
+}
+
 .button-secondary-1 {
     width: 226px;
     height: 52px;
@@ -137,6 +155,7 @@
     cursor: pointer;
 }
 
+
 .bg-silver {
     background-color: var(--silver);
 }
@@ -144,6 +163,10 @@
 .bg-dark-navy {
     background-color: var(--dark-navy);
     cursor: pointer;
+}
+
+.bg-semi-dark-navy {
+    background-color: var(--semi-dark-navy);
 }
 
 .bg-dark-navy:hover {
@@ -158,8 +181,20 @@
     fill: var(--dark-navy);
 }
 
-@media(max-height: 600px) {
-    body {
-        transform: scale(0.85);
-    }
+.color-light-yellow {
+    color: var(--light-yellow);
 }
+
+.color-light-blue {
+    color: var(--light-blue);
+}
+
+.color-silver {
+    color: var(--silver);
+}
+
+// @media(max-height: 600px) {
+//     body {
+//         transform: scale(0.85);
+//     }
+// }

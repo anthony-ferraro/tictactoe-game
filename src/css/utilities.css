@@ -122,6 +122,31 @@
   cursor: pointer;
 }
 
+.button-secondary-2 {
+  width: 226px;
+  height: 52px;
+  border-radius: 10px;
+  background: #A8BFC9;
+  -webkit-box-shadow: inset 0px -4px 0px #6B8997;
+          box-shadow: inset 0px -4px 0px #6B8997;
+  color: var(--dark-navy);
+  border: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.button-secondary-2:hover {
+  background-color: var(--silver-hover);
+  cursor: pointer;
+}
+
 .button-secondary-1 {
   width: 226px;
   height: 52px;
@@ -183,6 +208,10 @@
   cursor: pointer;
 }
 
+.bg-semi-dark-navy {
+  background-color: var(--semi-dark-navy);
+}
+
 .bg-dark-navy:hover {
   background-color: rgba(168, 191, 201, 0.05);
 }
@@ -195,10 +224,15 @@
   fill: var(--dark-navy);
 }
 
-@media (max-height: 600px) {
-  body {
-    -webkit-transform: scale(0.85);
-            transform: scale(0.85);
-  }
+.color-light-yellow {
+  color: var(--light-yellow);
+}
+
+.color-light-blue {
+  color: var(--light-blue);
+}
+
+.color-silver {
+  color: var(--silver);
 }
 /*# sourceMappingURL=utilities.css.map */

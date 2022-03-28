@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, } from "react";
 import AppReducer from './AppReducer';
 
 //initial state
@@ -11,10 +11,12 @@ const initialState = {
     statistics: {
         player1_wins: 0,
         ties: 0,
-        player2_wins: 0
+        player2_wins: 0,
     },
-    latestMove: 0,
-    turn: 'x'
+    latestMove: -1,
+    boardState: '',
+    turn: 'x',
+    modalType: '',
 }
 
 export const GlobalContext = createContext(initialState);
@@ -22,17 +24,7 @@ export const GlobalContext = createContext(initialState);
 //provider component
 export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
-    const setLatestMove = (id) => {
-        dispatch({
-            type: "SET_LATEST_MOVE",
-            payload: id
-        })
-    }
-    const toggleTurn = () => {
-        dispatch({
-            type: "TOGGLE_TURN"
-        })
-    }
+    //setup
     const setPlayerMarker = (marker) => {
         dispatch({
             type: "SET_PLAYER_MARKER",
@@ -45,36 +37,57 @@ export const GlobalProvider = ({ children }) => {
             payload: gameType
         })
     }
-    const placeItem = (id, marker) => {
+    
+    //game running
+    const handleTurn = (id) => {
         dispatch({
-            type: "PLACE_MARKER",
-            payload: {
-                box: id,
-                marker: marker
-            }
+            type: "HANDLE_TURN",
+            payload: id
         })
     }
 
-    const clearBoard = () => {
+    const setModalType = (type) => {
         dispatch({
-            type: "CLEAR_BOARD"
+            type: "SET_MODAL_TYPE",
+            payload: type
         })
     }
+
+    //cleanup
+
+    const newGame = () => {
+        dispatch({
+            type: "NEW_GAME",
+        })
+    }
+
+    const resetGame = () => {
+        dispatch({
+            type: "RESET_GAME",
+        })
+    }
+    const restartGame = () => {
+        dispatch({
+            type: "RESTART_GAME"
+        })
+    }
+
     return <GlobalContext.Provider value={{
         gameType: state.gameType,
         playerMarker: state.playerMarker,
         gameContent: state.gameContent,
+        boardState: state.boardState,
         turn: state.turn,
         statistics: state.statistics,
-        latestMove: state.latestMove,
+        modalType: state.modalType,
         setPlayerMarker: setPlayerMarker,
-        placeItem: placeItem,
         setGameType: setGameType,
-        toggleTurn: toggleTurn,
-        setLatestMove: setLatestMove
+        restartGame: restartGame,
+        handleTurn: handleTurn,
+        setModalType: setModalType,
+        resetGame: resetGame,
         
-
     }}>
         {children}
     </GlobalContext.Provider>
-}
+    }
