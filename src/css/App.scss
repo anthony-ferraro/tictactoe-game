@@ -167,6 +167,10 @@ body {
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
+    svg {
+        width: 50%;
+        height: 50%
+    }
 }
 
 .cursor-pointer {
@@ -260,6 +264,9 @@ body {
     align-items: center;
     justify-content: center;
     gap: 25px;
+    p {
+        white-space: nowrap;
+    }
 }
 
 .modal-buttons-wrapper {
@@ -282,4 +289,60 @@ body {
         height: 52px;
         box-shadow: inset 0px -4px 0px #6B8997;
     }
+}
+
+@media(max-width: 500px) {
+    .new-game-menu {
+        width: 100vw;
+        // min-width: 333px;
+    }
+
+    .mark-select {
+        width: 90vw;
+    }
+
+    .mark-buttons-wrapper {
+        width: 80vw;
+        button {
+            width: 50%;
+        }
+    }
+    .new-game-buttons {
+        width: 90vw;
+    }
+
+    .game-container {
+        width: 90vw;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .game-footer {
+        width: 100%;
+    }
+
+    .tracker {
+        width: calc(80vw / 3);
+    }
+
+    .game-grid {
+        width: 90vw;
+        gap: 5vw;
+    }
+
+    .grid-box {
+        width: calc(80vw / 3);
+        height: calc(80vw / 3);
+    }
+
+    .board-state-announcement p{
+        font-size: 24px;
+        white-space: nowrap;
+    }
+
+    .board-state-announcement svg{
+        width: 30px;
+        height: 30px;
+    }
+
 }

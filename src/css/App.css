@@ -253,6 +253,11 @@ body {
   gap: 20px;
 }
 
+.game-grid svg {
+  width: 50%;
+  height: 50%;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -388,6 +393,10 @@ body {
   gap: 25px;
 }
 
+.board-state-announcement p {
+  white-space: nowrap;
+}
+
 .modal-buttons-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -421,5 +430,52 @@ body {
   height: 52px;
   -webkit-box-shadow: inset 0px -4px 0px #6B8997;
           box-shadow: inset 0px -4px 0px #6B8997;
+}
+
+@media (max-width: 500px) {
+  .new-game-menu {
+    width: 100vw;
+  }
+  .mark-select {
+    width: 90vw;
+  }
+  .mark-buttons-wrapper {
+    width: 80vw;
+  }
+  .mark-buttons-wrapper button {
+    width: 50%;
+  }
+  .new-game-buttons {
+    width: 90vw;
+  }
+  .game-container {
+    width: 90vw;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 20px;
+  }
+  .game-footer {
+    width: 100%;
+  }
+  .tracker {
+    width: calc(80vw / 3);
+  }
+  .game-grid {
+    width: 90vw;
+    gap: 5vw;
+  }
+  .grid-box {
+    width: calc(80vw / 3);
+    height: calc(80vw / 3);
+  }
+  .board-state-announcement p {
+    font-size: 24px;
+    white-space: nowrap;
+  }
+  .board-state-announcement svg {
+    width: 30px;
+    height: 30px;
+  }
 }
 /*# sourceMappingURL=App.css.map */

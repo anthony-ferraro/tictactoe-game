@@ -47,6 +47,13 @@
   border-radius: 15px;
 }
 
+.grey-border-pressed {
+  background: #1F3641;
+  -webkit-box-shadow: inset 0px -4px 0px #10212A;
+          box-shadow: inset 0px -4px 0px #10212A;
+  border-radius: 15px;
+}
+
 .button-1 {
   width: 410px;
   height: 67px;

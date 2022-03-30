@@ -3,21 +3,30 @@ import { GlobalContext } from '../context/GlobalState';
 import Button from './Button';
 import Icon from './Icon';
 import ReactDOM from 'react-dom'
+import { useNavigate } from 'react-router-dom';
 
 const Modal = ({ type }) => {
     const [domReady, setDomReady] = useState(false);
+    const navigate = useNavigate()
     React.useEffect(() => {
         setDomReady(true);
     },[])
     const context = useContext(GlobalContext)
-    const setModalType = context.setModalType
-    const restartGame = context.restartGame
     const handleCancel = () => {
-        setModalType("")
+        context.setModalType("")
     }
 
     const handleRestart = () => {
-        restartGame()
+        context.restartGame()
+    }
+
+    const handleQuit = () => {
+        context.resetGame()
+        navigate('/')
+    }
+
+    const handleReset = () => {
+        context.resetGame()
     }
     return domReady  && type==='game-end-menu' ? 
     ReactDOM.createPortal(
@@ -64,7 +73,7 @@ const Modal = ({ type }) => {
         </div>
             <div className="modal-buttons-wrapper">
                 <Button onClick={handleCancel} classes="button-secondary-2" width="139px" height="52px">NO, CANCEL</Button>
-                <Button onClick={handleRestart} classes="button-1" width="151px" height="52px">YES, RESTART</Button>
+                <Button onClick={handleReset} classes="button-1" width="151px" height="52px">YES, RESTART</Button>
             </div>
         </div>
         <div className="modal-overlay"></div>

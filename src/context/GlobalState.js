@@ -55,12 +55,6 @@ export const GlobalProvider = ({ children }) => {
 
     //cleanup
 
-    const newGame = () => {
-        dispatch({
-            type: "NEW_GAME",
-        })
-    }
-
     const resetGame = () => {
         dispatch({
             type: "RESET_GAME",
