@@ -514,7 +514,7 @@ body {
     width: 90vw;
     gap: 5vw;
   }
-  .grid-box {
+  .grid-box, .grid-box-pressed {
     width: calc(80vw / 3);
     height: calc(80vw / 3);
   }

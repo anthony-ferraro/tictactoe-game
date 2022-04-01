@@ -8,18 +8,19 @@ import { GlobalContext } from '../context/GlobalState';
 
 const Game = () => {
   const context = useContext(GlobalContext)
+
   useEffect(() => {
     document.title = "Tic Tac Toe"
   }, [])
 
   useEffect(() => {
-    if(context.gameType==='cpu' && context.turn!==context.playerMarker) {
+    if((context.gameType==='cpu' && context.modalType=='' && context.turn!==context.playerMarker)) {
       setTimeout(() => {
         context.handleCpuTurn()
       }, 500)
-      
     }
-  }, [context.turn])
+  }, [context.latestMove])
+
   return (
     <>
       <div className="game-container">

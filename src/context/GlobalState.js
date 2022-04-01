@@ -80,6 +80,7 @@ export const GlobalProvider = ({ children }) => {
         turn: state.turn,
         statistics: state.statistics,
         modalType: state.modalType,
+        latestMove: state.latestMove,
         setPlayerMarker: setPlayerMarker,
         setGameType: setGameType,
         restartGame: restartGame,

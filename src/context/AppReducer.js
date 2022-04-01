@@ -70,7 +70,7 @@ export default (state, action) => {
             return {
                 ...state,
                 gameContent: cpuNewGameContent,
-                turn: state.turn === "x" ? "o" : "x",
+                turn: (cpuNewBoardState==='') ? (state.turn==='x' ? 'o' : 'x') : state.turn,
                 latestMove: cpuMove,
                 boardState: cpuNewBoardState,
                 modalType: cpuNewBoardState==='win' || cpuNewBoardState==='tie' ? 'game-end-menu' : '',
@@ -142,6 +142,7 @@ export default (state, action) => {
         case "RESET_GAME":
             return {
                 ...state,
+                turn: 'x',
                 gameContent: ['','','','','','','','',''],
                 latestMove: -1,
                 boardState: '',
@@ -155,9 +156,11 @@ export default (state, action) => {
         case "RESTART_GAME":
             return {
                 ...state,
+                gameContent: state.gameContent.map(() => ''),
+                latestMove: -1,
+                boardState: '',
                 modalType: '',
                 turn: 'x',
-                gameContent: state.gameContent.map(() => '')
             }
     }
 }
