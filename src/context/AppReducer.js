@@ -1,11 +1,86 @@
 export default (state, action) => {
+    const possibleWins = [
+        //rows
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+        //columns
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        //diagonals
+        [0,4,8],
+        [2,4,6]
+    ]
     switch(action.type) {
         //default
         default:
             return {
                 ...state
             }
-        //setup
+        case "CPU_TURN":
+            //set newGameContent equal to state.gameContent but with
+            let emptyList = state.gameContent.map((item, index) => {
+                return item==='' ? index : null
+            }).filter(id => id!==null)
+            
+            let cpuTurnList = state.gameContent.map((content, index) => {
+                return content===state.turn ? index : null
+            }).filter(id => id!==null)
+
+            let playerTurnList = state.gameContent.map((content, index) => {
+                return content===(state.turn==='x' ? 'o' : 'x') ? index : null
+            }).filter(id => id!==null)
+            
+            const blockLose = possibleWins.map((win) => {
+                let possibleLossMoves = win.map((id) => {return playerTurnList.includes(id) ? id : null})
+                let loseId = (possibleLossMoves.filter(id => id===null).length === 1 ? possibleLossMoves.findIndex(id => id===null) : null)
+                return loseId !== null ? win[loseId] : null
+            }).filter(id => id!==null).filter(id => state.gameContent[id]==='')
+
+            const moveWin = possibleWins.map((win) => {
+                let possibleLossMoves = win.map((id) => {return cpuTurnList.includes(id) ? id : null})
+                let loseId = (possibleLossMoves.filter(id => id===null).length === 1 ? possibleLossMoves.findIndex(id => id===null) : null)
+                return loseId !== null ? win[loseId] : null
+            }).filter(id => id!==null).filter(id => state.gameContent[id]==='')
+            
+            const cpuMove = moveWin.length>0 ? moveWin[Math.floor(Math.random() * moveWin.length)] :
+                            blockLose.length>0 ? blockLose[Math.floor(Math.random() * blockLose.length)] :
+                            emptyList[Math.floor(Math.random() * emptyList.length)]
+            
+            //set newGameContent equal to state.gameContent but with state.gameContent[cpuMove] replaced with state.turn
+            let cpuNewGameContent = state.gameContent
+            cpuNewGameContent[cpuMove] = state.turn
+            cpuTurnList.push(cpuMove)
+
+            const cpuWinList = possibleWins.filter((win) => {
+                return win.every((id) => {
+                    return cpuTurnList.includes(id)
+                })
+            })
+            
+            cpuNewGameContent = cpuNewGameContent.map((content, index) => {
+                return cpuWinList.flat().includes(index) ? content.toUpperCase() : content
+            })
+
+
+            const cpuNewBoardState = cpuWinList.length===0 && cpuNewGameContent.every(content => content!=='') ? 'tie' :
+            cpuWinList.length===0 && !cpuNewGameContent.every(content => content!=='') ? '' : 'win'
+
+            return {
+                ...state,
+                gameContent: cpuNewGameContent,
+                turn: state.turn === "x" ? "o" : "x",
+                latestMove: cpuMove,
+                boardState: cpuNewBoardState,
+                modalType: cpuNewBoardState==='win' || cpuNewBoardState==='tie' ? 'game-end-menu' : '',
+                statistics: {
+                    ...state.statistics,
+                    player1_wins: cpuNewBoardState==='win' && state.turn===state.playerMarker ? state.statistics.player1_wins+1 : state.statistics.player1_wins,
+                    ties: cpuNewBoardState==='tie' ? state.statistics.ties+1 : state.statistics.ties,
+                    player2_wins: cpuNewBoardState==='win' && state.turn!==state.playerMarker ? state.statistics.player2_wins+1 : state.statistics.player2_wins
+                }
+            }
         case "SET_PLAYER_MARKER":
             return {
                 ...state,
@@ -26,21 +101,9 @@ export default (state, action) => {
             let newGameContent = state.gameContent.map((content, index) => {
                 return index===newLatestMove ? state.turn : content
             })
-            const possibleWins = [
-                //rows
-                [0,1,2],
-                [3,4,5],
-                [6,7,8],
-                //columns
-                [0,3,6],
-                [1,4,7],
-                [2,5,8],
-                //diagonals
-                [0,4,8],
-                [2,4,6]
-            ]
+            
             //create turnList which is the list of ids in newGameContent that contain state.turn
-            const turnList = newGameContent.map((content, index) => {
+            let turnList = newGameContent.map((content, index) => {
                 return content===state.turn ? index : null
             }).filter(id => id!==null)
 

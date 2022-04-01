@@ -46,6 +46,12 @@ export const GlobalProvider = ({ children }) => {
         })
     }
 
+    const handleCpuTurn = () => {
+        dispatch({
+            type: "CPU_TURN",
+        })
+    }
+
     const setModalType = (type) => {
         dispatch({
             type: "SET_MODAL_TYPE",
@@ -80,6 +86,7 @@ export const GlobalProvider = ({ children }) => {
         handleTurn: handleTurn,
         setModalType: setModalType,
         resetGame: resetGame,
+        handleCpuTurn: handleCpuTurn,
         
     }}>
         {children}

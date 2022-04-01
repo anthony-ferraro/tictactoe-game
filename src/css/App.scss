@@ -177,23 +177,49 @@ body {
     cursor: pointer;
 }
 
+.game-grid > div {
+    transition: box-shadow 0.1s linear, background-color 0.1s linear;
+}
 .grid-box {
     width: 140px;
     height: 140px;
-    background: #1F3641;
+    background-color: #1F3641;
     box-shadow: inset 0px -8px 0px #10212A;
     border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
-.grid-box.bg-light-blue {
+.grid-box-pressed {
+    width: 140px;
+    height: 140px;
+    background-color: #1F3641;
+    box-shadow: inset 0px -4px 0px #10212A;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bg-light-blue {
+    width: 140px;
+    height: 140px;
     background-color: #31c3bd;
-    box-shadow: inset 0px -8px 0px #26928f;
+    box-shadow: inset 0px -4px 0px #26928f;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.grid-box.bg-light-yellow {
+.bg-light-yellow {
+    width: 140px;
+    height: 140px;
     background-color: #f2b137;
-    box-shadow: inset 0px -8px 0px #e09a18;
+    box-shadow: inset 0px -4px 0px #e09a18;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .game-footer {

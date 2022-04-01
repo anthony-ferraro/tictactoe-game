@@ -50,8 +50,8 @@ const NewGameMenu = () => {
 
       </div>
       <div className="new-game-buttons">
-        <button onClick={() => startGame('cpu')} className="button-1 heading-S new-game-cpu">New Game (VS CPU)</button>
-        <button onClick={() => startGame('player')} className="button-2 heading-S new-game-player">New Game (VS Player)</button>
+        <button onClick={() => startGame('cpu')} className="button-1 heading-S new-game-cpu"><p>NEW GAME (VS CPU)</p></button>
+        <button onClick={() => startGame('player')} className="button-2 heading-S new-game-player"><p>NEW GAME (VS Player)</p></button>
       </div>
     </div>
   )

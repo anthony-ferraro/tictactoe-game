@@ -4,7 +4,7 @@
 #####################################################
 *.sketch
 *.fig
-figma
+/figma
 
 # Avoid accidental XD upload if you convert the design file
 ###############################################
@@ -39,3 +39,6 @@ figma
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local Netlify folder
+.netlify

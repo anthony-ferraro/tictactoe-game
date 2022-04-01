@@ -9,16 +9,17 @@ const GridBox = ({id, content}) => {
     const turn = context.turn
     const [hovering, setHovering] = useState(false);
     const iconSize = '63.75px';
-    const pointerClass = (content==='') ? 'cursor-pointer' : ''
+    const pointerClass = (content==='' && ((context.gameType==='player') || (context.gameType==='cpu' && turn===context.playerMarker))) ? 'cursor-pointer' : ''
     const backgroundClass = (content==='X') ? 'bg-light-blue' :
                             (content==='O') ? 'bg-light-yellow' :
                             ''
-    const gridBoxClasses = `grid-box ${pointerClass} ${backgroundClass}`
+    const pressedClass = content==='' ? 'grid-box' : 'grid-box-pressed'
+    const gridBoxClasses = `${pressedClass} ${pointerClass} ${backgroundClass}`
     const returnInnerContent = (content) => {
         switch(content) {
             default:
             case '':
-                if(hovering) {
+                if(hovering && ((context.gameType==='player') || (context.gameType==='cpu' && turn===context.playerMarker))) {
                     return <Icon icon={`${turn}-border`} width={iconSize} height={iconSize} fill={turn==='x' ? '#31C3BD' : '#F2B137'}></Icon>
                 }
                 else {
@@ -36,7 +37,7 @@ const GridBox = ({id, content}) => {
     }
 
     const handleClick = () => {
-        if(content==='') {
+        if((content==='') && (context.gameType==='player' || (context.gameType==='cpu' && turn===context.playerMarker))) {
             handleTurn(id)
         }
     }                

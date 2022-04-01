@@ -2,12 +2,24 @@ import React from 'react';
 import GameHeader from './GameHeader';
 import GameGrid from './GameGrid';
 import GameFooter from './GameFooter';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Modal from './Modal';
 import { GlobalContext } from '../context/GlobalState';
 
 const Game = () => {
   const context = useContext(GlobalContext)
+  useEffect(() => {
+    document.title = "Tic Tac Toe"
+  }, [])
+
+  useEffect(() => {
+    if(context.gameType==='cpu' && context.turn!==context.playerMarker) {
+      setTimeout(() => {
+        context.handleCpuTurn()
+      }, 500)
+      
+    }
+  }, [context.turn])
   return (
     <>
       <div className="game-container">
