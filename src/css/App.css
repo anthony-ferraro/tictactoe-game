@@ -272,7 +272,6 @@ body {
 .grid-box {
   width: 140px;
   height: 140px;
-  background-color: #1F3641;
   -webkit-box-shadow: inset 0px -8px 0px #10212A;
           box-shadow: inset 0px -8px 0px #10212A;
   border-radius: 15px;
@@ -285,12 +284,19 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #1F3641;
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .grid-box-pressed {
   width: 140px;
   height: 140px;
   background-color: #1F3641;
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
   -webkit-box-shadow: inset 0px -4px 0px #10212A;
           box-shadow: inset 0px -4px 0px #10212A;
   border-radius: 15px;

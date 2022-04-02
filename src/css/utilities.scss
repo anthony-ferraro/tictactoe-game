@@ -10,10 +10,29 @@
     --silver-hover: #dbe8ed;
 }
 
+.bg-xo {
+    background-image: url(../assets/icon-x-outline.svg);
+}
+.bg-oo {
+    background-image: url(../assets/icon-o-outline.svg);
+}
+.bg-x {
+    background-image: url(../assets/icon-x.svg);
+}
+.bg-o {
+    background-image: url(../assets/icon-o.svg);
+}
+
+
 .heading-L {
     font-weight: bold;
     font-size: 40px;
     letter-spacing: 2.5px;
+}
+
+path {
+    width: 100%;
+    height: 100%;
 }
 
 .heading-M {
@@ -41,13 +60,13 @@
 }
 
 .grey-border {
-    background: #1F3641;
+    background-color: #1F3641;
     box-shadow: inset 0px -8px 0px #10212A;
     border-radius: 15px;
 }
 
 .grey-border-pressed {
-    background: #1F3641;
+    background-color: #1F3641;
     box-shadow: inset 0px -4px 0px #10212A;
     border-radius: 15px;
 }
@@ -119,7 +138,7 @@ button {
     width: 226px;
     height: 52px;
     border-radius: 10px;
-    background: #A8BFC9;
+    background-color: #A8BFC9;
     box-shadow: inset 0px -4px 0px #6B8997;
     color: var(--dark-navy);
     border: none;

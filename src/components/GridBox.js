@@ -9,30 +9,28 @@ const GridBox = ({id, content}) => {
     const turn = context.turn
     const [hovering, setHovering] = useState(false);
     const iconSize = '63.75px';
-    const pointerClass = (content==='' && ((context.gameType==='player') || (context.gameType==='cpu' && turn===context.playerMarker))) ? 'cursor-pointer' : ''
+    // const pointerClass = (content==='' && ((context.gameType==='player') || (context.gameType==='cpu' && turn===context.playerMarker))) ? 'cursor-pointer' : ''
+    const pointerClass = 'cursor-pointer'
     const backgroundClass = (content==='X') ? 'bg-light-blue' :
                             (content==='O') ? 'bg-light-yellow' :
                             ''
     const pressedClass = content==='' ? 'grid-box' : 'grid-box-pressed'
-    const gridBoxClasses = `${pressedClass} ${pointerClass} ${backgroundClass}`
+    const imageClass = (content==='' && hovering && ((context.gameType==='player') || (context.gameType==='cpu' && turn===context.playerMarker))) ? `bg-${turn}o` : ''
+    const gridBoxClasses = `${pressedClass} ${pointerClass} ${backgroundClass} ${imageClass}`
+
     const returnInnerContent = (content) => {
         switch(content) {
             default:
             case '':
-                if(hovering && ((context.gameType==='player') || (context.gameType==='cpu' && turn===context.playerMarker))) {
-                    return <Icon icon={`${turn}-border`} width={iconSize} height={iconSize} fill={turn==='x' ? '#31C3BD' : '#F2B137'}></Icon>
-                }
-                else {
-                    return <></>
-                }
+                return <></>
             case 'x':
-                return <Icon icon={content} width={iconSize} height={iconSize} fill='#31C3BD'></Icon>
+                return <Icon onClick={handleClick} icon={content} width={iconSize} height={iconSize} fill='#31C3BD'></Icon>
             case 'o':
-                return <Icon icon={content} width={iconSize} height={iconSize} fill='#F2B137'></Icon>
+                return <Icon onClick={handleClick} icon={content} width={iconSize} height={iconSize} fill='#F2B137'></Icon>
             case 'X':
-                return <Icon icon={content} width={iconSize} height={iconSize} fill='#1f3641'></Icon>
+                return <Icon onClick={handleClick} icon={content} width={iconSize} height={iconSize} fill='#1f3641'></Icon>
             case 'O':
-                return <Icon icon={content} width={iconSize} height={iconSize} fill='#1f3641'></Icon>
+                return <Icon onClick={handleClick} icon={content} width={iconSize} height={iconSize} fill='#1f3641'></Icon>
         }
     }
 
